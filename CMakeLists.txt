@@ -15,11 +15,9 @@ FetchContent_Declare(
   lvgl
   GIT_REPOSITORY https://github.com/lvgl/lvgl.git
   GIT_TAG master
+  SOURCE_SUBDIR __unused__
 )
-FetchContent_GetProperties(lvgl)
-if(NOT lvgl_POPULATED)
-  FetchContent_Populate(lvgl)
-endif()
+FetchContent_MakeAvailable(lvgl)
 
 set(LVGL_SRC_DIR ${lvgl_SOURCE_DIR})
 set(LV_CONF_PATH ${CMAKE_BINARY_DIR}/lv_conf.h)
