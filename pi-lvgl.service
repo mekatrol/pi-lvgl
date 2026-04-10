@@ -1,0 +1,25 @@
+[Unit]
+Description=LVGL Kiosk UI
+After=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+Group=pi
+SupplementaryGroups=video input render
+WorkingDirectory=/home/pi/repos/pi-lvgl
+Environment=LV_LINUX_DRM_CARD=/dev/dri/card1
+Environment=LV_LINUX_EVDEV_POINTER_DEVICE=/dev/input/by-path/platform-fe205000.i2c-event
+ExecStart=/home/pi/repos/pi-lvgl/build/app
+Restart=always
+RestartSec=2
+StandardInput=tty-force
+StandardOutput=journal
+StandardError=journal
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+
+[Install]
+WantedBy=multi-user.target
